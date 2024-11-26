@@ -8,6 +8,11 @@ class StatusTransitionsController < ApplicationController
     end
 
     respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: [
+          turbo_stream.prepend(:events, partial: "projects/status_transition", locals: {event: @status_transition.event})
+        ]
+      end
       format.html { redirect_to @project }
     end
   end
