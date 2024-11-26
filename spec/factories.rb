@@ -1,9 +1,9 @@
 FactoryBot.define do
-  sequence :display_name do |n|
+  sequence :name do |n|
     "Display Name #{n}"
   end
 
   factory :project do
-    display_name { generate(:display_name) }
+    name { generate(:name) }
   end
 end

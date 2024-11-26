@@ -1,6 +1,6 @@
 <%= link_to "New project", new_project_path %>
 <ul>
   <% @projects.each do |project| %>
-    <li><%= project.display_name %></li>
+    <li><%= project.name %></li>
   <% end %>
 </ul>

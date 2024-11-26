@@ -2,8 +2,8 @@ require "rails_helper"
 
 feature "viewing all projects" do
   it "shows a list of project" do
-    create(:project, display_name: "My first project")
-    create(:project, display_name: "My second project")
+    create(:project, name: "My first project")
+    create(:project, name: "My second project")
 
     visit "/"
 

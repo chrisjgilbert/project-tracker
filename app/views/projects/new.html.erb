@@ -1,9 +1,9 @@
 <%= form_with model: @project do |form| %>
-  <%= form.label :display_name, "Name" %>
-  <%= form.text_field :display_name %>
-  <% if @project.errors.full_messages_for(:display_name).any? %>
+  <%= form.label :name, "Name" %>
+  <%= form.text_field :name %>
+  <% if @project.errors.full_messages_for(:name).any? %>
     <div>
-      <%= @project.errors.full_messages_for(:display_name).first %>
+      <%= @project.errors.full_messages_for(:name).first %>
     </div>
   <% end %>
   <%= form.submit "Create" %>
