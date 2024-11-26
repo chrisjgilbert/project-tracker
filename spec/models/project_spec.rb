@@ -19,4 +19,16 @@ RSpec.describe Project, type: :model do
         .with_values([:not_started, :in_progress, :complete, :cancelled])
     end
   end
+
+  describe "#update_status!" do
+    it "creates a new status transition and updates the project status" do
+      project = create(:project, status: :not_started)
+
+      project.update_status!(:in_progress)
+
+      expect(project.status).to eq("in_progress")
+      expect(project.status_transitions.last.from).to eq("not_started")
+      expect(project.status_transitions.last.to).to eq("in_progress")
+    end
+  end
 end

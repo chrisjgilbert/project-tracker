@@ -6,4 +6,12 @@ class Project < ApplicationRecord
   validates :name, presence: true, uniqueness: true
 
   enum :status, [:not_started, :in_progress, :complete, :cancelled], default: :not_started, validate: true
+
+  def update_status!(to)
+    self.with_lock do
+      transition = status_transitions.create!(from: status, to: to)
+      update!(status: to)
+      transition
+    end
+  end
 end
