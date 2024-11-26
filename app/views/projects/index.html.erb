@@ -1,4 +1,5 @@
-<div>
-  <h1 class="font-bold text-4xl">Projects#index</h1>
-  <p>Find me in app/views/projects/index.html.erb</p>
-</div>
+<ul>
+  <% @projects.each do |project| %>
+    <li><%= project.display_name %></li>
+  <% end %>
+</ul>
