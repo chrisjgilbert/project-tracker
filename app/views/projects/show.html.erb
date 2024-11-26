@@ -5,9 +5,11 @@
   <%= form.select :to, options_for_status_transition, selected: @project.status %>
 <% end %>
 
+<%= render "comments/form", project: @project, comment: @comment %>
+
 <h2>History</h2>
-<ol>
+<ol id="events">
   <% @project.events.each do |event| %>
-    <li><%= render "projects/status_transition", status_transition: event.eventable %></li>
+    <li><%= render "#{event.eventable_name}", event: event %></li>
   <% end %>
 </ol>

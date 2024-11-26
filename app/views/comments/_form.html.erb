@@ -1,0 +1,11 @@
+<%= form_with model: [project, comment], id: :new_comment_form do |form| %>
+  <%= form.label :content, "Comment" %>
+  <%= form.text_area :content, rows: 4 %>
+    <% if comment.errors.full_messages_for(:content).any? %>
+    <div>
+      <%= comment.errors.full_messages_for(:content).first %>
+    </div>
+  <% end %>
+
+  <%= form.submit "Add comment" %>
+<% end %>

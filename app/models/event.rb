@@ -1,4 +1,4 @@
 class Event < ApplicationRecord
   belongs_to :project
-  belongs_to :eventable, polymorphic: true
+  delegated_type :eventable, types: %w[ Comment StatusTransition ]
 end

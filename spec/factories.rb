@@ -1,4 +1,9 @@
 FactoryBot.define do
+  factory :comment do
+    content { "MyText" }
+    author { "MyString" }
+  end
+
   factory :status_transition do
     from { 1 }
     to { 1 }

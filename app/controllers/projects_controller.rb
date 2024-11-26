@@ -20,6 +20,7 @@ class ProjectsController < ApplicationController
   def show
     @project = Project.find(params[:id])
     @status_transition = @project.status_transitions.build
+    @comment = @project.comments.build
   end
 
   private

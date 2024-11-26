@@ -5,6 +5,7 @@ Rails.application.routes.draw do
 
   resources :projects, only: %i[new create show] do
     resources :status_transitions, only: :create
+    resources :comments, only: :create
   end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
