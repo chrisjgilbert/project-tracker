@@ -7,4 +7,11 @@ RSpec.describe Project, type: :model do
     subject { build(:project) }
     it { should validate_uniqueness_of(:name) }
   end
+
+  describe "enums" do
+    it do
+      should define_enum_for(:status)
+        .with_values([:not_started, :in_progress, :complete, :cancelled])
+    end
+  end
 end
