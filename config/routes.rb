@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
+  get "status_transitions/create"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   root "projects#index"
 
-  resources :projects, only: %i[new create show]
+  resources :projects, only: %i[new create show] do
+    resources :status_transitions, only: :create
+  end
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
   # Can be used by load balancers and uptime monitors to verify that the app is live.

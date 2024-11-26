@@ -1,2 +1,13 @@
 <%= @project.name %>
-<%= @project.status.humanize %>
+
+<%= form_with model: [@project, @status_transition], data: {controller: "status-transition", action: "change->status-transition#submit"} do |form| %>
+  <%= form.label :to, "Status" %>
+  <%= form.select :to, options_for_status_transition, selected: @project.status %>
+<% end %>
+
+<h2>History</h2>
+<ol>
+  <% @project.events.each do |event| %>
+    <li><%= render "projects/status_transition", status_transition: event.eventable %></li>
+  <% end %>
+</ol>
