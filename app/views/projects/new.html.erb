@@ -1,0 +1,10 @@
+<%= form_with model: @project do |form| %>
+  <%= form.label :display_name, "Name" %>
+  <%= form.text_field :display_name %>
+  <% if @project.errors.full_messages_for(:display_name).any? %>
+    <div>
+      <%= @project.errors.full_messages_for(:display_name).first %>
+    </div>
+  <% end %>
+  <%= form.submit "Create" %>
+<% end %>
