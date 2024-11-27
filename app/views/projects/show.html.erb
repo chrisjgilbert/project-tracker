@@ -1,16 +1,23 @@
-<%= link_to "Back to projects", root_path %>
-<%= @project.name %>
-
-<%= form_with model: [@project, @status_transition], data: {controller: "status-transition", action: "change->status-transition#submit"} do |form| %>
-  <%= form.label :to, "Status" %>
-  <%= form.select :to, options_for_status_transition, selected: @project.status %>
-<% end %>
-
-<%= render "comments/form", project: @project, comment: @comment %>
-
-<h2>History</h2>
-<ol id="events">
-  <% @project.ordered_events.each do |event| %>
-    <%= render "#{event.eventable_name}", event: event %>
-  <% end %>
-</ol>
+<%= link_to "< Back to projects", root_path, class: "mb-6 font-medium text-blue-600 dark:text-blue-500 hover:underline" %>
+<div class="flex flex-col md:flex-row gap-6">
+  <section class="basis-2/4">
+    <div class="flex flex-col gap-4">
+      <h1 class="text-2xl font-semibold"><%= @project.name %></h1>
+      <%= form_with model: [@project, @status_transition],
+          class: "flex flex-col",
+          data: {controller: "status-transition", action: "change->status-transition#submit"} do |form| %>
+        <%= form.label :to, "Status", class: "block mb-2 text-sm font-medium text-gray-900 dark:text-white" %>
+        <%= form.select :to, options_for_status_transition, {selected: @project.status}, {class: "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"} %>
+      <% end %>
+      <%= render "comments/form", project: @project, comment: @comment %>
+    </div>
+  </section>
+  <aside class="basis-2/4 flex flex-col">
+    <h2 class="text-lg mb-4 font-semibold">History</h2>
+    <ol class="relative border-s border-gray-200 dark:border-gray-700" id="events">
+      <% @project.ordered_events.each do |event| %>
+        <%= render "#{event.eventable_name}", event: event %>
+      <% end %>
+    </ol>
+  </aside>
+</div>

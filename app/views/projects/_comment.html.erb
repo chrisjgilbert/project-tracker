@@ -1,3 +1,4 @@
-<li>
-  <span>Added a comment <%= event.comment.content %></span>
+<li class="mb-4 ms-4 flex flex-col">
+  <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500" datetime="<%= event.created_at %>"><%= time_ago_in_words(event.created_at) %></time>
+  <span class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Added a comment <%= event.comment.content %></span>
 </li>

@@ -1,3 +1,6 @@
-<li>
-  Status changed from <%= event.status_transition.from.humanize %> to <%= event.status_transition.to.humanize %>
+<li class="mb-4 ms-4 flex flex-col">
+  <time class="mb-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500" datetime="<%= event.created_at %>"><%= time_ago_in_words(event.created_at) %></time>
+  <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">
+    Status changed from <%= event.status_transition.from.humanize %> to <%= event.status_transition.to.humanize %>
+  </p>
 </li>
