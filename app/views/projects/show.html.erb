@@ -10,7 +10,7 @@
 
 <h2>History</h2>
 <ol id="events">
-  <% @project.events.each do |event| %>
+  <% @project.ordered_events.each do |event| %>
     <li><%= render "#{event.eventable_name}", event: event %></li>
   <% end %>
 </ol>

@@ -1,0 +1,6 @@
+- add test for listing out history (and updating it)
+- add any other specs that are required
+- styling pass
+- code review
+- type up docs
+- submit

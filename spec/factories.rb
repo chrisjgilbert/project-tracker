@@ -1,17 +1,25 @@
 FactoryBot.define do
   factory :comment do
     content { "MyText" }
-    author { "MyString" }
   end
 
   factory :status_transition do
-    from { 1 }
-    to { 1 }
+    from { :in_progress }
+    to { :complete }
   end
 
   factory :event do
-    project { project }
-    eventable { status_transition }
+    project
+
+    for_comment # defaut
+
+    trait :for_comment do
+      association :eventable, factory: :comment
+    end
+
+    trait :for_status_transition do
+      association :eventable, factory: :status_transition
+    end
   end
 
   sequence :name do |n|

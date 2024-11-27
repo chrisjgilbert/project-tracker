@@ -20,6 +20,19 @@ RSpec.describe Project, type: :model do
     end
   end
 
+  describe "#ordered_events" do
+    it "returns the events ordered by created_at" do
+      project = create(:project)
+      event1 = create(:event, :for_comment, project: project, created_at: 1.day.ago)
+      event2 = create(:event, :for_status_transition, project: project, created_at: 1.hour.ago)
+      event3 = create(:event, :for_comment, project: project, created_at: 1.minute.ago)
+
+      result = project.ordered_events.map(&:id)
+
+      expect(result).to eq([event3.id, event2.id, event1.id])
+    end
+  end
+
   describe "#update_status!" do
     it "creates a new status transition and updates the project status" do
       project = create(:project, status: :not_started)

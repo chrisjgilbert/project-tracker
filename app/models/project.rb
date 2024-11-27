@@ -7,6 +7,10 @@ class Project < ApplicationRecord
 
   enum :status, [:not_started, :in_progress, :complete, :cancelled], default: :not_started, validate: true
 
+  def ordered_events
+    events.includes(:eventable).order(created_at: :desc)
+  end
+
   def update_status!(to)
     self.with_lock do
       transition = status_transitions.create!(from: status, to: to)
