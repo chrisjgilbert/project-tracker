@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe StatusTransition, type: :model do
   describe "associations" do
@@ -10,7 +10,7 @@ RSpec.describe StatusTransition, type: :model do
     it { should validate_presence_of(:to) }
 
     it "validates that from and to are different" do
-      project = create(:project)
+      create(:project)
       transition = build(:status_transition, from: :not_started, to: :not_started)
 
       expect(transition).to_not be_valid

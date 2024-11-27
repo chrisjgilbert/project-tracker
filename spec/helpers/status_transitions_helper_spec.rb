@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe StatusTransitionsHelper, type: :helper do
   describe "#options_for_status_transition" do
