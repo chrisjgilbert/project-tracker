@@ -2,6 +2,8 @@
 
 ## To run the app for the first time
 
+Ensure you have ruby 3.3.1.
+
 ```
 # install gems
 bundle install
