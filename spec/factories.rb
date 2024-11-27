@@ -1,9 +1,13 @@
 FactoryBot.define do
   factory :comment do
+    event
+
     content { "MyText" }
   end
 
   factory :status_transition do
+    event
+
     from { :in_progress }
     to { :complete }
   end
