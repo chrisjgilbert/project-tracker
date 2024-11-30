@@ -14,4 +14,7 @@ bundle exec rake db:migrate
 
 # start the rails dev server
 ./bin/dev
+
+# run the tests
+bundle exec rspec
 ```
